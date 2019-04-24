@@ -1,0 +1,13 @@
+.home{
+    padding-bottom: 3em;
+}
+.background{
+    background: url(/crime.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 665px;
+}
+.body{
+    height: 665px;
+    background: rgba(0, 0, 0, 0.3);
+}
