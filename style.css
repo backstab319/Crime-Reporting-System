@@ -5,9 +5,30 @@
     background: url(/crime.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 665px;
+    height: 618px;
 }
-.body{
-    height: 665px;
+.overlay{
+    height: 618px;
     background: rgba(0, 0, 0, 0.3);
+}
+.center-content{
+    height: 618px;
+}
+.complaint{
+    background: url(/complaint.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 618px;
+}
+.feedback{
+    background: url(/feedback.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 618px;
+}
+.station{
+    background: url(/station.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 618px;
 }
