@@ -44,7 +44,7 @@
             <h1 class="display-4 text-warning font-weight-bold">Manage Station's Data</h1>
             <p class="lead text-light">Please use the following link to manage police stations data</p>
             <a href="/data/criminal_data.php" class="btn btn-outline-warning">Upload Criminal Data</a>
-            <a href="/data/missing_person.php" class="btn btn-outline-warning">Upload Missing Person Data</a>
+            <a href="/data/person_data.php" class="btn btn-outline-warning">Upload Missing Person Data</a>
         </div>
     </div>
 
