@@ -35,3 +35,15 @@
 .center-two-content{
     height: 309px;
 }
+.news{
+    background: url(/news.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 618px;
+}
+.admin{
+    background: url(/admin.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 618px;
+}
