@@ -27,6 +27,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/signup.php">Sign up</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="tips.php">Tips</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about.php">About</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -85,21 +91,102 @@
                     ?>
                 </div>
             </div>
+            <div class="d-flex container flex-row align-items-end justify-content-center col-lg-4 col-xl-4">
+                <div class="newss">
+                    <h1 class="display-4 text-center text-primary">Latest News</h1>
+                    <?php
+                        checknews();
+                        function checknews(){
+                            global $conn;
+                            $sql = "SELECT * FROM news";
+                            $result = $conn->query($sql);
+                            if($result->num_rows >0){
+                                shownews($result);
+                            }else{
+                                echo "<p class='lead text-center text-light'>No News avaliable</p>";
+                            }
+                        }
+                        function shownews($result){
+                            echo "<ul class='list-group'>";
+                            while($row = $result->fetch_assoc()){
+                                $head = $row["heading"];
+                                $body = $row["body"];
+                                echo "<li class='list-group-item'>".$head." : ".$body."</li>";
+                            }
+                            echo "</ul>";
+                        }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="container">
         <div class="container text-center text-justify">
-            <h1 class="display-4 text-primary">Latest News</h1>
-        </div>
-        <div class="container text-center text-justify">
             <h1 class="display-4 text-primary">Missing Individuals</h1>
-        </div>
-        <div class="container text-center text-justify">
-            <h1 class="display-4 text-primary">Missing Vehicles</h1>
+            <?php
+                include "connect.php";
+                show_person();
+                function show_person(){
+                    global $conn;
+                    $sql = "SELECT * FROM person_data";
+                    $result = $conn->query($sql);
+                    if($result->num_rows > 0){
+                        showp($result);
+                    }else{
+                        echo "<p class='lead text-center'>There are no person's data</p>";
+                    }
+                }
+                function showp($result){
+                    echo '<table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-primary">
+                    <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Last Seen</th>
+                    <th>Height</th>
+                    </tr>
+                    </thead>';
+                    while($row = $result->fetch_assoc()){
+                        echo "<tr><td><img src='".$row['image']."' class='img-thumbnail'></td><td>".$row['name']."</td><td>".$row['gender']."</td><td>".$row['last_seen']."</td><td>".$row['height']."</td></tr>";
+                    }
+                    echo "</table>";
+                }
+            ?>
         </div>
         <div class="container text-center text-justify">
             <h1 class="display-4 text-primary">Dangerous Criminals</h1>
+            <?php
+                show_criminal();
+                function show_criminal(){
+                    global $conn;
+                    $sql = "SELECT * FROM criminal_data";
+                    $result = $conn->query($sql);
+                    if($result->num_rows > 0){
+                        showc($result);
+                    }else{
+                        echo "<p class='lead text-center'>There are no criminal's data</p>";
+                    }
+                }
+                function showc($result){
+                    echo '<table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-primary">
+                    <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Last Seen</th>
+                    <th>Height</th>
+                    <th>Charges</th>
+                    </tr>
+                    </thead>';
+                    while($row = $result->fetch_assoc()){
+                        echo "<tr><td><img src='".$row['image']."' class='img-thumbnail'></td><td>".$row['name']."</td><td>".$row['gender']."</td><td>".$row['last_seen']."</td><td>".$row['height']."</td><td>".$row['charges']."</td></tr>";
+                    }
+                    echo "</table>";
+                }
+            ?>
         </div>
     </div>
     
