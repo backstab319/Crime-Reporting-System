@@ -29,11 +29,52 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/index.php">Home</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/data/person_data.php">Person Data</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </navbar>
+    </div>
+
+    <div class="text-center center-content container d-flex justify-content-center align-items-center">
+        <div class="form-group col-lg-7 col-xl-7 text-center">
+            <form action="updatec_data.php" method="POST">
+            <h1 class="display-4">Update Person's Data</h1>
+            <input type="text" class="form-control my-2" name="oldval" placeholder="Enter old value">
+                    <label for="column">Select Information to change</label>
+                    <select class="form-control my-2" name="column" id="column">
+                        <option value="image">Image</option>
+                        <option value="name">Name</option>
+                        <option value="gender">PGender</option>
+                        <option value="last_seen">Last Seen</option>
+                        <option value="height">Height</option>
+                    </select>
+                    <input type="text" class="form-control my-2" name="newval" placeholder="Enter new value">
+                    <input type="submit" class="form-control my-2 btn-outline-primary" value="Update" name="update">
+            </form>
+            <?php
+                include "../connect.php";
+                if(isset($_POST["update"])){
+                    update();
+                }
+                function update(){
+                    global $conn;
+                    $oldval = $_POST["oldval"];
+                    $column = $_POST["column"];
+                    $newval = $_POST["newval"];
+                    if(($oldval and $column and $newval)!= NULL){
+                        $sql = "UPDATE person_data SET $column='$newval' WHERE $column='$oldval'";
+                        echo "<p class='lead text-danger'>Data Updated</p>";
+                        $conn->query($sql);
+                    }else{
+                        echo "<p class='lead text-danger'>Please check all input before proceeding</p>";
+                    }
+                }
+            ?>
+        </div>
     </div>
     
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
