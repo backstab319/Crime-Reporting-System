@@ -71,12 +71,14 @@
                     <th>Username</th>
                     <th>Subject</th>
                     <th>Complaint</th>
-                    <th>Address</th>
+                    <th>Delete</th>
+                    <th>Date</th>
+                    <th>Time</th>
                     </tr>
                     </thead>';
                     while($row = $result->fetch_assoc()){
                         
-                        echo "<tr><td>".$row['user_id']."</td><td>".$row['subject']."</td><td>".$row['complain']."</td><td><a class='btn btn-primary' href='station.php?name=".$row['user_id']."'>Delete</a></td></tr>";
+                        echo "<tr><td>".$row['user_id']."</td><td>".$row['subject']."</td><td>".$row['complain']."</td><td>".$row["date"]."</td><td>".$row['time']."</td><td><a class='btn btn-primary' href='station.php?name=".$row['user_id']."'>Delete</a></td></tr>";
                     }
                     echo "</table>";
                 }
