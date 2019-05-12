@@ -61,8 +61,10 @@
             }
             function complain($sub,$com){
                 global $conn;
+                $date = date("d-m-y");
+                $time = date("h:i");
                 $user = $_COOKIE["user"];
-                $sql = "INSERT INTO complains VALUES('$user','$sub','$com')";
+                $sql = "INSERT INTO complains VALUES('$user','$sub','$com','$date','$time')";
                 echo "<p class='lead text-danger'>Your complaint has been successfully registered!</p>";
                 $conn->query($sql);
             }
